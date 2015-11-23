@@ -7,10 +7,9 @@ It is also possible to unregister the template, e.g. when a module is uninstalle
 
 Use like this:
 
-{% highlight java %}
-TemplateRegistration.registerTemplate("a", "a.html");
-TemplateRegistration.unRegisterTemplate("a");
-{% endhighlight %}
+
+```TemplateRegistration.registerTemplate("a", "a.html");
+TemplateRegistration.unRegisterTemplate("a");```
 
 Registering will add a new script tag with src pointng to an external html file. 
 The template will then be lazy loaded when first used.

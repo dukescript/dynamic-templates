@@ -34,10 +34,12 @@ final class DataModel {
     public static void registerA(Data model) {
         TemplateRegistration.registerTemplate("a", "a.html");
     }
+    
     @Function
     public static void registerA1(Data model) {
         TemplateRegistration.registerTemplate("a", "a1.html");
     }
+    
     @Function
     public static void unRegisterB(Data model) {
         TemplateRegistration.unRegisterTemplate("b");

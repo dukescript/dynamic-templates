@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <button data-bind="click: registerB">Register B</button>
+        <button data-bind="click: registerA">Register a</button>
+        <button data-bind="click: unRegisterB">unRegister B</button>
+        <button data-bind="click: unRegisterA">unRegister a</button>
+        <button data-bind="click: setA">Template A</button>
+        <button data-bind="click: setB">Template B</button>
+        <button data-bind="click: registerA1">Change Template A</button>
+        <div data-bind="template: { name: template, data: content }"></div>
+    </body>
+</html>

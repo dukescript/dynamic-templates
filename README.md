@@ -9,6 +9,7 @@ Use like this:
 
 
 ```Closeable templ = TemplateRegistration.registerTemplate("a", "a.html");
+// do sthg with it...
 templ.close();```
 
 Registering will add a new script tag with src pointing to an external html file. 

@@ -9,9 +9,11 @@ It is also possible to unregister the template, e.g. when a module is uninstalle
 Use like this:
 
 
-```Closeable templ = TemplateRegistration.registerTemplate("a", "a.html");
+```
+Closeable templ = TemplateRegistration.registerTemplate("a", "a.html");
 // do sthg with it...
-templ.close();```
+templ.close();
+```
 
 Registering will add a new script tag with src pointing to an external html file. 
 The template will then be lazy loaded when first used.

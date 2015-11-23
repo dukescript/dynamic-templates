@@ -1,6 +1,10 @@
 package com.dukescript.plugins.dynamictemplates;
 
 import com.dukescript.plugins.dynamictemplates.js.TemplateRegistration;
+import java.io.Closeable;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.java.html.json.Function;
 import net.java.html.json.Model;
 import net.java.html.json.Models;
@@ -13,14 +17,16 @@ import net.java.html.json.Property;
 final class DataModel {
 
     private static Data ui;
-
+    private static Closeable a;
+    private static Closeable b;
+    
     /**
      * Called when the page is ready.
      */
     static void onPageLoad() throws Exception {
         ui = new Data();
         Models.toRaw(ui);
-        TemplateRegistration.register("a", "a.html");
+        a = TemplateRegistration.registerTemplate("a", "a.html");
         ui.setTemplate("a");
         ui.setContent("This is Content!");
         ui.applyBindings();
@@ -28,25 +34,34 @@ final class DataModel {
 
     @Function
     public static void registerB(Data model) {
-        TemplateRegistration.registerTemplate("b", "b.html");
+       b = TemplateRegistration.registerTemplate("b", "b.html");
     }
     @Function
     public static void registerA(Data model) {
-        TemplateRegistration.registerTemplate("a", "a.html");
+        a = TemplateRegistration.registerTemplate("a", "a.html");
     }
     
     @Function
     public static void registerA1(Data model) {
-        TemplateRegistration.registerTemplate("a", "a1.html");
+        a = TemplateRegistration.registerTemplate("a", "a1.html");
     }
     
     @Function
     public static void unRegisterB(Data model) {
-        TemplateRegistration.unRegisterTemplate("b");
+        if (b != null ) try {
+            b.close();
+        } catch (IOException ex) {
+            Logger.getLogger(DataModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
     @Function
     public static void unRegisterA(Data model) {
-        TemplateRegistration.unRegisterTemplate("a");
+        if (a != null ) try {
+            a.close();
+        } catch (IOException ex) {
+            Logger.getLogger(DataModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Function

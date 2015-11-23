@@ -8,12 +8,13 @@ It is also possible to unregister the template, e.g. when a module is uninstalle
 Use like this:
 
 
-```TemplateRegistration.registerTemplate("a", "a.html");
-TemplateRegistration.unRegisterTemplate("a");```
+```Closeable templ = TemplateRegistration.registerTemplate("a", "a.html");
+templ.close();```
 
-Registering will add a new script tag with src pointng to an external html file. 
+Registering will add a new script tag with src pointing to an external html file. 
 The template will then be lazy loaded when first used.
-Subsequent attempts to register a template with the same id will be logged and ignored.
+Subsequent attempts to register a template with the same id will throw an IllegalStateException.
 
-Unregistering will remove the script, which makes it eligible for gc.
+Unregistering will remove the script, which makes it eligible for gc. Only who registered the template first will 
+ receive the Closeable as a handle and can deregister it.
 

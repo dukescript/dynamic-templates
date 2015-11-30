@@ -10,7 +10,7 @@ Use like this:
 
 
 ```
-Closeable templ = TemplateRegistration.registerTemplate("a", "a.html");
+Closeable templ = TemplateRegistration.register("a", "a.html");
 // do sthg with it...
 templ.close();
 ```

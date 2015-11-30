@@ -26,7 +26,7 @@ final class DataModel {
     static void onPageLoad() throws Exception {
         ui = new Data();
         Models.toRaw(ui);
-        a = TemplateRegistration.registerTemplate("a", "a.html");
+        a = TemplateRegistration.register("a", "a.html");
         ui.setTemplate("a");
         ui.setContent("This is Content!");
         ui.applyBindings();
@@ -34,16 +34,16 @@ final class DataModel {
 
     @Function
     public static void registerB(Data model) {
-       b = TemplateRegistration.registerTemplate("b", "b.html");
+       b = TemplateRegistration.register("b", "b.html");
     }
     @Function
     public static void registerA(Data model) {
-        a = TemplateRegistration.registerTemplate("a", "a.html");
+        a = TemplateRegistration.register("a", "a.html");
     }
     
     @Function
     public static void registerA1(Data model) {
-        a = TemplateRegistration.registerTemplate("a", "a1.html");
+        a = TemplateRegistration.register("a", "a1.html");
     }
     
     @Function

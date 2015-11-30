@@ -13,7 +13,7 @@ public class TemplateRegistration {
      * HTMl file. The following code will register a template defined in file
      * <i>"template1.html"</i> under id <i>"template1"</i>:
      * <br><br><br>
-     * {@code Closeable template = TemplateRegistration.registerTemplate("template1", "template1.html");}
+     * {@code Closeable template = TemplateRegistration.register("template1", "template1.html");}
      * <br><br>
      * The template can be unregistered by calling:
      * <br><br> {@code template.close();}
@@ -36,7 +36,7 @@ public class TemplateRegistration {
      * @param template the src (relative to loaded page).
      * @return A closeable that can be called
      */
-    public static Closeable registerTemplate(String id, String template) throws IllegalStateException{
+    public static Closeable register(String id, String template) throws IllegalStateException{
         final Object obj = registerTemplate_impl(id, template);
         if (obj == null) throw new IllegalStateException("Cannot register a template with id "+id +" and template "+template+" (trying to register twice?)");
         return new Closeable() {
@@ -51,7 +51,7 @@ public class TemplateRegistration {
             + "if ( my_template ) {\n"
             + "   return null;\n"
             + "}\n"
-            + "console.log('Registering a template for id '+id+ ' with src='+template);\n"
+//            + "console.log('Registering a template for id '+id+ ' with src='+template);\n"
             + "my_template = document.createElement('script');\n"
             + "my_template.setAttribute('id', id);\n"
             + "my_template.type ='text/html';\n"
